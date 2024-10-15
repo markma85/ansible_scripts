@@ -1,8 +1,8 @@
 # ansible_scripts
 
 ## node_info
-```console
-$ ansible-playbook node_info.yml
+```bash
+ansible-playbook node_info.yml
 ```
 
 <details>
@@ -158,8 +158,8 @@ $ ansible-playbook node_info.yml
 
 
 ## ufw_status
-```console
-$ ansible-playbook ufw_status.yml
+```bash
+ansible-playbook ufw_status.yml
 ```
 <details>
     <summary>Output</summary>
@@ -190,8 +190,8 @@ $ ansible-playbook ufw_status.yml
 </details>
 
 ## update_upgrade
-```console
-$ ansible-playbook update_upgrade
+```bash
+ansible-playbook update_upgrade
 ```
 
 <details>
@@ -217,8 +217,8 @@ $ ansible-playbook update_upgrade
 </details>
 
 ## systemctl_status
-```console
-$ ansible-playbook systemctl_status.yml \
+```bash
+ansible-playbook systemctl_status.yml \
   --extra-vars "service_name=ssh"
 ```
 <details>

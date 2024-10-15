@@ -1,0 +1,12 @@
+---
+- name: Gather UFW status from all nodes
+  hosts: all
+  become: true
+  tasks:
+    - name: Check UFW status
+      command: ufw status
+      register: ufw_output
+
+    - name: Display UFW status output
+      debug:
+        msg: "{{ inventory_hostname }}: {{ ufw_output.stdout }}"

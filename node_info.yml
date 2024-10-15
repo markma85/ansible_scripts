@@ -1,0 +1,28 @@
+---
+- name: Gather node information
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Gather Hostname and IP Address
+      debug:
+        msg: "{{ inventory_hostname }} - Hostname: {{ ansible_hostname }}, IP Address: {{ ansible_default_ipv4.address }}"
+
+    - name: Gather Operating System Information
+      debug:
+        msg: "{{ inventory_hostname }} - OS: {{ ansible_distribution }} {{ ansible_distribution_version }} ({{ ansible_architecture }})"
+
+    - name: Gather CPU Information
+      debug:
+        msg: "{{ inventory_hostname }} - CPU Cores: {{ ansible_processor_cores }}"
+
+    - name: Gather Memory Information
+      debug:
+        msg: "{{ inventory_hostname }} - Total Memory: {{ ansible_memtotal_mb }} MB"
+
+    - name: Gather Disk Information
+      command: df -h --total
+      register: disk_info
+
+    - name: Display Disk Information
+      debug:
+        var: disk_info.stdout_lines

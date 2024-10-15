@@ -1,0 +1,15 @@
+---
+- name: Check system service status on all nodes
+  hosts: all
+  become: true
+  vars:
+    service_name: "{{ service_name | default('ssh') }}"
+  tasks:
+    - name: Check the status of the service
+      command: "systemctl status {{ service_name }}"
+      register: service_status_output
+      ignore_errors: yes # This ensures the playbook continues if the service doesn't exist on some nodes
+
+    - name: Display service status output
+      debug:
+        var: service_status_output.stdout_lines

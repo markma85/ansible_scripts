@@ -1,6 +1,52 @@
-# ansible_scripts
+# Ansible Scripts Collection
 
-## node_info
+Welcome to the **Ansible Scripts Collection**! This repository contains a growing set of Ansible playbooks designed to help automate common system administration tasks across your infrastructure. These playbooks are created with flexibility and scalability in mind, aiming to make the management of multiple nodes as efficient and reliable as possible.
+
+## Repository Overview
+
+In this repository, you'll find scripts that automate various tasks such as gathering system information, managing services, configuring firewall rules, and keeping systems up to date. I will continue adding more playbooks as I expand this collection to cover additional automation needs.
+
+### Current Playbooks
+
+- **node_info.yml**: Gathers detailed system information such as hostname, IP addresses, and available memory for the target nodes. [See exmple](#node_info)
+  
+- **systemctl_status.yml**: Retrieves the status of systemd services on the target nodes, ensuring the services are running as expected. [See exmple](#systemctl_status)
+  
+- **ufw_status.yml**: Checks the status of the Uncomplicated Firewall (UFW) on the target nodes, displaying the current firewall rules and their states. [See exmple](#ufw_status)
+  
+- **update_upgrade.yml**: Runs system updates and upgrades on the target nodes to ensure that they are running the latest security patches and software versions. [See exmple](#update_upgrade)
+
+## How to Use
+
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/markma85/ansible_scripts.git
+    ```
+2. **Set up Ansible**:
+    Ensure you have Ansible installed on your control node (your machine). You can install Ansible using pip:
+    ```bash
+    pip install ansible
+    ```
+
+3. **Run a playbook**:
+    To run any of the playbooks, specify the target nodes in your `inventory` file and execute the following command:
+    ```bash
+    ansible-playbook -i inventory node_info.yml
+    ```
+
+4. **Contribute**:
+    If you'd like to contribute additional scripts or enhance existing ones, feel free to open a pull request. Feedback and collaboration are always welcome!
+
+## Future Plans
+
+I plan to expand this collection by adding more playbooks related to system configuration, security hardening, application deployment, and more. Stay tuned for frequent updates!
+
+## Contact
+
+If you have any questions, feel free to reach out through GitHub issues.
+
+## Examples
+### node_info
 ```bash
 ansible-playbook node_info.yml
 ```
@@ -157,7 +203,7 @@ ansible-playbook node_info.yml
 </details>
 
 
-## ufw_status
+### ufw_status
 ```bash
 ansible-playbook ufw_status.yml
 ```
@@ -189,7 +235,7 @@ ansible-playbook ufw_status.yml
     node2                      : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 </details>
 
-## update_upgrade
+### update_upgrade
 ```bash
 ansible-playbook update_upgrade
 ```
@@ -216,7 +262,7 @@ ansible-playbook update_upgrade
     node2                      : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 </details>
 
-## systemctl_status
+### systemctl_status
 ```bash
 ansible-playbook systemctl_status.yml \
   --extra-vars "service_name=ssh"
